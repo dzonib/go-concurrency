@@ -75,7 +75,7 @@ func makePizza(pizzaNumber int) *PizzaOrder {
 			msg = fmt.Sprintf("*** The cook quit, while making pizza number %d!", pizzaNumber)
 		} else {
 			success = true
-			fmt.Sprintf("Pizza order number #%d is ready! :)", pizzaNumber)
+			msg = fmt.Sprintf("Pizza order number #%d is ready! :)", pizzaNumber)
 		}
 
 		p := PizzaOrder{
@@ -100,8 +100,6 @@ func makePizza(pizzaNumber int) *PizzaOrder {
 func pizzeria(pizzaMaker *Producer) {
 	// keep track of which pizza we are making
 	var i = 0
-
-	// run forever or until we receive a quit notification
 
 	// this loop will continue to execute, trying to make pizzas,
 	// until the quit channel receives something.
@@ -151,6 +149,7 @@ func main() {
 
 	for i := range pizzaJob.data {
 		if i.pizzaNumber <= NumberOfPizzas {
+
 			if i.success {
 				color.Green(i.message)
 				color.Green("Order #%d is out for delivery", i.pizzaNumber)
